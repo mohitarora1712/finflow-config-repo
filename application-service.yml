@@ -6,14 +6,14 @@ spring:
     name: application-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/application-service_db
+    url: jdbc:postgresql://localhost:5433/application_service_db
     username: postgres
     password: root
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
   redis:
     host: localhost
@@ -22,6 +22,11 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
+    connection-timeout: 5s
+
+logging:
+  level:
+    org.hibernate.SQL: debug
 
 eureka:
   client:
