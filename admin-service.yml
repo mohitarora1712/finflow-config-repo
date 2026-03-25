@@ -5,6 +5,11 @@ spring:
   application:
     name: admin-service
 
+  cloud:
+    openfeign:
+      httpclient:
+        enabled: true
+
 eureka:
   client:
     service-url:
