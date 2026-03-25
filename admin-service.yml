@@ -5,8 +5,11 @@ spring:
   application:
     name: admin-service
 
-  # Feign HTTP client (HC5) is enabled via dependency + config class,
-  # no extra properties needed here.
+  cloud:
+    openfeign:
+      httpclient:
+        hc5:
+          enabled: true
 
 eureka:
   client:
