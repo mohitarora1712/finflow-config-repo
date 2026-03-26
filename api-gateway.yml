@@ -29,6 +29,19 @@ spring:
           predicates:
             - Path=/admin/**
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: AUTH-SERVICE
+        url: /auth/v3/api-docs
+      - name: APPLICATION-SERVICE
+        url: /applications/v3/api-docs
+      - name: DOCUMENT-SERVICE
+        url: /documents/v3/api-docs
+      - name: ADMIN-SERVICE
+        url: /admin/v3/api-docs
+
 jwt:
   secret: myverysecuresecretkeymyverysecuresecretkey
 
