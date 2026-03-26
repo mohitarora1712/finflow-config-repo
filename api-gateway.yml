@@ -2,44 +2,37 @@ server:
   port: 8080
 
 spring:
-  application:
-    name: api-gateway
-
   cloud:
     gateway:
       routes:
 
-        # AUTH SERVICE
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/auth/**
           filters:
-            - RewritePath=/auth/(?<segment>.*), /${segment}
+            - StripPrefix=1
 
-        # APPLICATION SERVICE
         - id: application-service
           uri: lb://APPLICATION-SERVICE
           predicates:
             - Path=/applications/**
           filters:
-            - RewritePath=/applications/(?<segment>.*), /${segment}
+            - StripPrefix=1
 
-        # DOCUMENT SERVICE
         - id: document-service
           uri: lb://DOCUMENT-SERVICE
           predicates:
             - Path=/documents/**
           filters:
-            - RewritePath=/documents/(?<segment>.*), /${segment}
+            - StripPrefix=1
 
-        # ADMIN SERVICE
         - id: admin-service
           uri: lb://ADMIN-SERVICE
           predicates:
             - Path=/admin/**
           filters:
-            - RewritePath=/admin/(?<segment>.*), /${segment}
+            - StripPrefix=1
 
 springdoc:
   swagger-ui:
