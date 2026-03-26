@@ -15,21 +15,29 @@ spring:
               uri: lb://AUTH-SERVICE
               predicates:
                 - Path=/auth/**
+              filters:
+                - RewritePath=/auth/(?<segment>.*), /${segment}
 
             - id: application-service
               uri: lb://APPLICATION-SERVICE
               predicates:
                 - Path=/applications/**
+              filters:
+                - RewritePath=/applications/(?<segment>.*), /${segment}
 
             - id: document-service
               uri: lb://DOCUMENT-SERVICE
               predicates:
                 - Path=/documents/**
+              filters:
+                - RewritePath=/documents/(?<segment>.*), /${segment}
 
             - id: admin-service
               uri: lb://ADMIN-SERVICE
               predicates:
                 - Path=/admin/**
+              filters:
+                - RewritePath=/admin/(?<segment>.*), /${segment}
 
 springdoc:
   swagger-ui:
