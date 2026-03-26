@@ -1,4 +1,10 @@
+server:
+  port: 8080
+
 spring:
+  application:
+    name: api-gateway
+
   cloud:
     gateway:
       routes:
@@ -30,3 +36,26 @@ spring:
             - Path=/admin/**
           filters:
             - StripPrefix=1
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    configUrls:
+      - /auth/v3/api-docs
+      - /applications/v3/api-docs
+      - /documents/v3/api-docs
+      - /admin/v3/api-docs
+
+jwt:
+  secret: myverysecuresecretkeymyverysecuresecretkey
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
