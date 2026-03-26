@@ -11,33 +11,58 @@ spring:
         webflux:
           routes:
 
+            # AUTH
             - id: auth-service
               uri: lb://AUTH-SERVICE
               predicates:
                 - Path=/auth/**
-              filters:
-                - RewritePath=/auth/(?<segment>.*), /${segment}
 
+            # APPLICATION
             - id: application-service
               uri: lb://APPLICATION-SERVICE
               predicates:
                 - Path=/applications/**
-              filters:
-                - RewritePath=/applications/(?<segment>.*), /${segment}
 
+            # DOCUMENT
             - id: document-service
               uri: lb://DOCUMENT-SERVICE
               predicates:
                 - Path=/documents/**
-              filters:
-                - RewritePath=/documents/(?<segment>.*), /${segment}
 
+            # ADMIN
             - id: admin-service
               uri: lb://ADMIN-SERVICE
               predicates:
                 - Path=/admin/**
+
+            # SWAGGER ROOT ROUTES
+            - id: auth-swagger
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/auth/v3/api-docs
               filters:
-                - RewritePath=/admin/(?<segment>.*), /${segment}
+                - RewritePath=/auth/v3/api-docs, /v3/api-docs
+
+            - id: application-swagger
+              uri: lb://APPLICATION-SERVICE
+              predicates:
+                - Path=/applications/v3/api-docs
+              filters:
+                - RewritePath=/applications/v3/api-docs, /v3/api-docs
+
+            - id: document-swagger
+              uri: lb://DOCUMENT-SERVICE
+              predicates:
+                - Path=/documents/v3/api-docs
+              filters:
+                - RewritePath=/documents/v3/api-docs, /v3/api-docs
+
+            - id: admin-swagger
+              uri: lb://ADMIN-SERVICE
+              predicates:
+                - Path=/admin/v3/api-docs
+              filters:
+                - RewritePath=/admin/v3/api-docs, /v3/api-docs
 
 springdoc:
   swagger-ui:
