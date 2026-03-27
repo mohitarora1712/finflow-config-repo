@@ -6,7 +6,12 @@ spring:
     name: application-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/application_service_db
+    # LOCAL
+    # url: jdbc:postgresql://localhost:5433/application_service_db
+
+    # DOCKER
+    url: jdbc:postgresql://postgres:5432/application_service_db
+
     username: postgres
     password: root
 
@@ -16,11 +21,21 @@ spring:
     show-sql: false
 
   redis:
-    host: localhost
+    # LOCAL
+    # host: localhost
+
+    # DOCKER
+    host: redis
+
     port: 6379
 
   rabbitmq:
-    host: localhost
+    # LOCAL
+    # host: localhost
+
+    # DOCKER
+    host: rabbitmq
+
     port: 5672
     connection-timeout: 5s
 
@@ -31,4 +46,8 @@ logging:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      # LOCAL
+      # defaultZone: http://localhost:8761/eureka
+
+      # DOCKER
+      defaultZone: http://eureka-server:8761/eureka
