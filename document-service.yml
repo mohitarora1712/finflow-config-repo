@@ -6,7 +6,12 @@ spring:
     name: document-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/document_service_db
+    # LOCAL
+    # url: jdbc:postgresql://localhost:5433/document_service_db
+
+    # DOCKER
+    url: jdbc:postgresql://postgres:5432/document_service_db
+
     username: postgres
     password: root
 
@@ -15,10 +20,19 @@ spring:
       ddl-auto: update
 
   rabbitmq:
-    host: localhost
+    # LOCAL
+    # host: localhost
+
+    # DOCKER
+    host: rabbitmq
+
     port: 5672
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      # LOCAL
+      # defaultZone: http://localhost:8761/eureka
+
+      # DOCKER
+      defaultZone: http://eureka-server:8761/eureka
