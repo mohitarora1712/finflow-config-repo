@@ -16,6 +16,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+feign:
+  circuitbreaker:
+    enabled: true
+
 resilience4j:
   circuitbreaker:
     instances:
