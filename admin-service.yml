@@ -37,3 +37,12 @@ resilience4j:
         failureRateThreshold: 50
         slidingWindowSize: 10
         minimumNumberOfCalls: 5
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+spring:
+  zipkin:
+    base-url: http://zipkin:9411
