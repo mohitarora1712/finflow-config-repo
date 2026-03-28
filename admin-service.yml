@@ -11,6 +11,9 @@ spring:
         hc5:
           enabled: true
 
+  zipkin:
+    base-url: http://zipkin:9411   # 🔥 merged here
+
 eureka:
   client:
     service-url:
@@ -42,7 +45,3 @@ management:
   tracing:
     sampling:
       probability: 1.0
-
-spring:
-  zipkin:
-    base-url: http://zipkin:9411
