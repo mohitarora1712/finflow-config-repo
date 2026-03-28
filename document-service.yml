@@ -19,7 +19,8 @@ spring:
     port: 5672
 
   zipkin:
-    base-url: http://zipkin:9411   # ✅ merged
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
 
 eureka:
   client:
