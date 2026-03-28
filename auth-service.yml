@@ -6,12 +6,7 @@ spring:
     name: auth-service
 
   datasource:
-    # LOCAL
-    # url: jdbc:postgresql://localhost:5433/auth-service_db
-
-    # DOCKER
     url: jdbc:postgresql://postgres:5432/auth-service_db
-
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
@@ -21,24 +16,18 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  zipkin:
+    base-url: http://zipkin:9411   # ✅ merged
+
 jwt:
   secret: myverysecuresecretkeymyverysecuresecretkey
 
 eureka:
   client:
     service-url:
-      # LOCAL
-      # defaultZone: http://localhost:8761/eureka/
-
-      # DOCKER
       defaultZone: http://eureka-server:8761/eureka/
-
 
 management:
   tracing:
     sampling:
       probability: 1.0
-
-spring:
-  zipkin:
-    base-url: http://zipkin:9411
