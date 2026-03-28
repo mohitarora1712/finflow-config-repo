@@ -6,12 +6,7 @@ spring:
     name: document-service
 
   datasource:
-    # LOCAL
-    # url: jdbc:postgresql://localhost:5433/document_service_db
-
-    # DOCKER
     url: jdbc:postgresql://postgres:5432/document_service_db
-
     username: postgres
     password: root
 
@@ -20,29 +15,18 @@ spring:
       ddl-auto: update
 
   rabbitmq:
-    # LOCAL
-    # host: localhost
-
-    # DOCKER
     host: rabbitmq
-
     port: 5672
+
+  zipkin:
+    base-url: http://zipkin:9411   # ✅ merged
 
 eureka:
   client:
     service-url:
-      # LOCAL
-      # defaultZone: http://localhost:8761/eureka
-
-      # DOCKER
       defaultZone: http://eureka-server:8761/eureka
-
 
 management:
   tracing:
     sampling:
       probability: 1.0
-
-spring:
-  zipkin:
-    base-url: http://zipkin:9411
