@@ -12,7 +12,8 @@ spring:
           enabled: true
 
   zipkin:
-    base-url: http://zipkin:9411   # 🔥 merged here
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
 
 eureka:
   client:
