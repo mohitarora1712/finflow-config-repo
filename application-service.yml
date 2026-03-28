@@ -5,6 +5,9 @@ spring:
   application:
     name: application-service
 
+  cache:
+    type: none   # 🔥 ONLY ADDITION
+
   datasource:
     # LOCAL
     # url: jdbc:postgresql://localhost:5433/application_service_db
