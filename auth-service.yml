@@ -32,3 +32,13 @@ eureka:
 
       # DOCKER
       defaultZone: http://eureka-server:8761/eureka/
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+spring:
+  zipkin:
+    base-url: http://zipkin:9411
