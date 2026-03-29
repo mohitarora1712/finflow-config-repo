@@ -11,17 +11,9 @@ spring:
         hc5:
           enabled: true
 
-  zipkin:
-    tracing:
-      endpoint: http://zipkin:9411/api/v2/spans
-
 eureka:
   client:
     service-url:
-      # LOCAL
-      # defaultZone: http://localhost:8761/eureka
-
-      # DOCKER
       defaultZone: http://eureka-server:8761/eureka
 
 feign:
@@ -46,3 +38,7 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
